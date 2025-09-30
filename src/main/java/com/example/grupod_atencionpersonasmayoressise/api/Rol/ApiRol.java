@@ -1,4 +1,4 @@
-package com.example.grupod_atencionpersonasmayoressise.api;
+package com.example.grupod_atencionpersonasmayoressise.api.Rol;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -10,7 +10,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.PathVariable;
+
 
 
 @RestController
@@ -24,5 +25,11 @@ public class ApiRol {
     public List<Rol>listar() {
         return  rolService.listar();
     }
+
+    @GetMapping("/obtenerRol")
+    public Rol obtenerPorId(@PathVariable Long id) {
+        return rolService.obtenerPorId(id);
+    }
+    
     
 }
