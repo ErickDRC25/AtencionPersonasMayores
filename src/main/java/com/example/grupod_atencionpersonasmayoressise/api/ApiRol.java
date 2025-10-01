@@ -1,4 +1,4 @@
-package com.example.grupod_atencionpersonasmayoressise.api.Rol;
+package com.example.grupod_atencionpersonasmayoressise.api;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

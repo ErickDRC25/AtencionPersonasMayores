@@ -101,7 +101,10 @@
     border-color: #28a745;
 
 }
-
+#tblEmpleado td button {
+    display: inline-block;
+    margin-right: 5px;
+}
 
 .btn-danger {
     color: #ffffff;
