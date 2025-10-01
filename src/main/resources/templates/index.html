@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | Gestión de Pacientes</title>
+    <link href="/style.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="/js/index.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="app-layout">
+        <aside class="sidebar-menu">
+            <div class="logo-sidebar">
+                <i class="fas fa-heartbeat"></i> Atención Adulto Mayor
+            </div>
+            <nav>
+                <a class="menu-item active">
+                    <i class="fas fa-chart-line"></i> Menu Principal
+                </a>
+
+                <a href="/paciente/listar" class="menu-item">
+                    <i class="fas fa-procedures"></i> Pacientes
+                </a>
+                <a href="/empleado/listar" class="menu-item">
+                    <i class="fas fa-user-tie"></i> Empleados
+                </a>
+                <a href="/citas/listar" class="menu-item">
+                    <i class="fas fa-calendar-check"></i> Citas Médicas
+                </a>
+                <a href="/atenciones/listar" class="menu-item">
+                    <i class="fas fa-briefcase-medical"></i> Atenciones
+                </a>
+                <a href="/rol/listar" class="menu-item">
+                    <i class="fas fa-key"></i> Roles de Usuario
+                </a>
+                <a href="/config" class="menu-item">
+                    <i class="fas fa-cog"></i> Configuración
+                </a>
+            </nav>
+        </aside>
+
+        <main class="dashboard-main-content">
+            <header class="top-bar">
+                <h1 class="title">Panel de Control</h1>
+                <div class="user-profile">
+                    <span class="user-name">Administrador</span>
+                    <i class="fas fa-user-circle"></i>
+                </div>
+            </header>
+            <div class="image-container">
+                <img src="https://theramart.com/cdn/shop/articles/atencion_al_adulto_mayor1_1024x1024.png?v=1557851584"
+                    class="main-image">
+            </div>
+        </main>
+    </div>
+
+</body>
+
+</html>

@@ -2,6 +2,10 @@ package com.example.grupod_atencionpersonasmayoressise.iservices;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
+import com.example.grupod_atencionpersonasmayoressise.Dto.PacienteDto;
 import com.example.grupod_atencionpersonasmayoressise.model.Paciente;
 
 public interface IPacienteService {
@@ -14,5 +18,11 @@ public interface IPacienteService {
     Paciente actualizar(Paciente paciente);
 
     Paciente eliminarLogico(Long id); 
+
+    public List<PacienteDto> listarPacienteDtos();
+
+    public Page<PacienteDto> paginado(String search, Pageable pageable);
+
+
 
 }

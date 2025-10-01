@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle del curso</title>
+    <link href="/style.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="/js/ver_paciente.js"></script>
+</head>
+
+<body>
+
+    <div class="container">
+        <label class="title">Información del paciente</label>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif" id="idCargando">
+        <table class="table">
+            <tbody>
+                <tr>
+                    <th>ID</th>
+                    <td id="idPaciente" th:text="${paciente.id_paciente}"></td>
+                </tr>
+                <tr>
+                    <th>Nombre</th>
+                    <td id="idNombre"></td>
+                </tr>
+                <tr>
+                    <th>Apellido</th>
+                    <td id="idApellido"></td>
+                </tr>
+                <tr>
+                    <th>Dni</th>
+                    <td id="idDni"></td>
+                </tr>
+                <tr>
+                    <th>Fecha Nacimiento</th>
+                    <td id="idFechaNacimiento"></td>
+                </tr>
+                <tr>
+                    <th>Direccion</th>
+                    <td id="idDireccion"></td>
+                </tr>
+                <tr>
+                    <th>Telefono</th>
+                    <td id="idTelefono"></td>
+                </tr>
+                <tr>
+                    <th>Alergias</th>
+                    <td id="idAlergias"></td>
+                </tr>
+                <tr>
+                    <th>Enfermedades Cronicas</th>
+                    <td id="idEnfermedadesCronicas"></td>
+                </tr>
+                <tr>
+                    <th>Estado</th>
+                    <td id="idEstado"></td>
+                </tr>
+            </tbody>
+        </table><br>
+        
+        <div>
+            <a th:href="@{/paciente/listar}" class="btn btn-primary">Volver a la lista</a>
+        </div>
+    </div>
+</body>
+
+</html>
