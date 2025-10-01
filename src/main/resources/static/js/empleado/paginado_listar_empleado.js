@@ -31,8 +31,9 @@ $(document).ready(function () {
                 "render": function (data, _, _) {
                     return `
                 <div class="d-flex justify-content-center gap-2">
-                    <button class="btn btn-sm btn-primary">Ver mas</button>
-                    <button class="btn btn-sm btn-warning">Actualizar</button>
+                    <button class="btn btn-sm btn-primary ver-mas" data-id="${data.idEmpleado}">Ver más</button>
+                    <button class="btn btn-sm btn-warning actualizar" data-id="${data.idEmpleado}">Actualizar</button>
+
                 </div>
             `;
                 }
@@ -42,4 +43,18 @@ $(document).ready(function () {
         "lengthMenu": [5, 10, 15, 20],
         "pageLength": 10
     })
+
+    $('#tblEmpleado').on('click', '.ver-mas', function () {
+        let idEmpleado = $(this).data("id");
+        window.location.href = "/empleado/ver?id=" + idEmpleado;
+    });
+    
+
+    $('#tblEmpleado').on('click', '.actualizar', function () {
+    let idEmpleado = $(this).data("id");
+
+    
+    window.location.href = "/empleado/actualizar/" + idEmpleado;
+});
+
 })
