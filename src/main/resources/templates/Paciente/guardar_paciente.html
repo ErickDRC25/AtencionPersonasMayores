@@ -17,7 +17,11 @@
 <body>
     <div class="container">
         <div class="card shadow p-4 mx-auto" style="max-width: 600px;">
-            <h1 class="text-center mb-4">Registrar Nuevo Paciente</h1>
+            <div class="encabezado-tabla">
+                <h1>Registrar  Paciente</h1>
+                <img src="https://docs.cientifica.edu.pe/marketing/sise/aula-virtual/sise-logo.png" alt="Logo de SISE"
+                    class="logo-sise">
+            </div>
 
             <form id="formRegistroPaciente" th:action="@{/paciente/guardar}" th:object="${paciente}" method="post">
                 <input type="hidden" th:field="*{id_paciente}">
