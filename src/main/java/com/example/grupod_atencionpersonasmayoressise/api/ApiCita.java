@@ -1,6 +1,6 @@
 package com.example.grupod_atencionpersonasmayoressise.api;
 
-import java.util.List;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -23,10 +23,7 @@ public class ApiCita {
     @Autowired
     ICitaService icitaService;
 
-    @GetMapping("/listarCita")
-    public List<Cita> listar() {
-        return icitaService.listar();
-    }
+    
 
     @GetMapping("/paginado")
     public Page<CitaDTO> paginado(
@@ -38,4 +35,10 @@ public class ApiCita {
         return citas.map(CitaMapper::toDto);
     }
 
+    @GetMapping("/obtener")
+    public Cita obtenerEmpleadoPorId(@RequestParam Long id) {
+        return icitaService.obtenerPorId(id);
+    }
+
+    
 }
