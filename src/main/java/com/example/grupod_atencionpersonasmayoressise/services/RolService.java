@@ -8,6 +8,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.example.grupod_atencionpersonasmayoressise.iservices.IRolService;
+
+
 import com.example.grupod_atencionpersonasmayoressise.model.Rol;
 import com.example.grupod_atencionpersonasmayoressise.repository.RolRepository;
 @Service
@@ -45,8 +47,13 @@ public class RolService implements IRolService {
         }
         return null;
     }
-
+  
     @Override
+    public List<Rol> listarRol() {
+       return rolRepository.findAll();
+    }
+
+      @Override
     public Page<Rol> paginado(String search, Pageable pageable) {
         if (search == null || search.isEmpty()) {
             return rolRepository.findAll(pageable);
