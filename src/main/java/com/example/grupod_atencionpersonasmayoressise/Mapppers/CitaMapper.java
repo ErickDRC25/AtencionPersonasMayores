@@ -7,27 +7,29 @@ import com.example.grupod_atencionpersonasmayoressise.Dto.CitaDTO;
 import com.example.grupod_atencionpersonasmayoressise.model.Cita;
 
 public class CitaMapper {
-    public static CitaDTO toDto(Cita cita){
-        if(cita==null){
+    public static CitaDTO toDto(Cita cita) {
+        if (cita == null) {
             return null;
         }
 
-        String nombrePaciente=cita.getPaciente().getNombre()+" "+cita.getPaciente().getApellido();
-        String nombreEmpleado=cita.getEmpleado().getNombre()+" "+cita.getPaciente().getApellido();
+        String nombrePaciente = cita.getPaciente().getNombre() + " " + cita.getPaciente().getApellido();
+        String nombreEmpleado = cita.getEmpleado().getNombre() + " " + cita.getEmpleado().getApellido();
         String estadoTexto = (cita.getEstado() == 1) ? "Activo" : "Inactivo";
 
         return new CitaDTO(
-            cita.getId_cita(),
-            nombrePaciente,
-            nombreEmpleado,
-            cita.motivo,
-            cita.fecha,
-            estadoTexto);
+                cita.getId_cita(),
+                cita.getPaciente().getId_paciente(),
+                cita.getEmpleado().getId_empleado(),
+                nombrePaciente,
+                nombreEmpleado,
+                cita.getMotivo(),
+                cita.getFecha(),
+                estadoTexto 
+        );
 
     }
 
-
-    public static List<CitaDTO> toDtoList(List<Cita> citas){
+    public static List<CitaDTO> toDtoList(List<Cita> citas) {
         return citas.stream().map(CitaMapper::toDto)
                 .collect(Collectors.toList());
     }

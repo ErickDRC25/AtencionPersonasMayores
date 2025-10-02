@@ -10,10 +10,12 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 public class CitaDTO {
-    private Long id_cita;
-    private String nombrePaciente;
-    private String nombreEmpleado;
-    private String motivo;
-    private LocalDateTime fecha;
-    private String estado;
+    public Long id_cita;
+    public Long idPaciente;
+    public Long idEmpleado;
+    public String nombrePaciente;
+    public String nombreEmpleado;
+    public String motivo;
+    public LocalDateTime fecha;
+    public String estado;
 }

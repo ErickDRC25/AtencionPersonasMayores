@@ -45,16 +45,17 @@ $(document).ready(function () {
     })
 
     $('#tblCita').on('click', '.ver-mas', function () {
-        let idEmpleado = $(this).data("id");
-        window.location.href = "/empleado/ver?id=" + idEmpleado;
+        let idCita = $(this).data("id");
+        window.location.href = "/citas/ver?id=" + idCita;
     });
 
 
     $('#tblCita').on('click', '.actualizar', function () {
-        let idEmpleado = $(this).data("id");
+        let idCita = $(this).data("id");
 
 
-        window.location.href = "/cita/actualizar/" + idEmpleado;
+        window.location.href = "/citas/actualizar?id=" + idCita;
+
     });
 
 })

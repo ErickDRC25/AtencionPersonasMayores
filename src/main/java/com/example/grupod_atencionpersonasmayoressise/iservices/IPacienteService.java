@@ -21,7 +21,7 @@ public interface IPacienteService {
 
     public List<PacienteDto> listarPacienteDtos();
 
-    public Page<PacienteDto> paginado(String search, Pageable pageable);
+    public Page<Paciente> paginado(String search, Pageable pageable);
 
 
 

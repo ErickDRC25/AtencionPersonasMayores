@@ -50,8 +50,8 @@ public class EmpleadoController {
     }
 
     @GetMapping("/nuevo")
-    public String nuevoEmpleado(Model model) {
-        model.addAttribute("empleado", new Empleado());
+    public String nuevoEmpleado(Empleado empleado ,Model model) {
+        model.addAttribute("empleado", empleado);
         model.addAttribute("roles", iRolService.listar());
         return "empleado/guardar";
     }

@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.example.grupod_atencionpersonasmayoressise.Dto.PacienteDto;
 import com.example.grupod_atencionpersonasmayoressise.Mapppers.PacienteMapper;
 import com.example.grupod_atencionpersonasmayoressise.iservices.IPacienteService;
+import com.example.grupod_atencionpersonasmayoressise.model.Empleado;
 import com.example.grupod_atencionpersonasmayoressise.model.Paciente;
 import com.example.grupod_atencionpersonasmayoressise.repository.PacienteRepository;
 
@@ -55,10 +56,12 @@ public class PacienteService implements IPacienteService {
     }
 
     @Override
-    public Page<PacienteDto> paginado(String search, Pageable pageable) {
-        Page<Paciente> pacientePage = pacienteRepository.paginado(search, pageable);
-        Page<PacienteDto> dtoPage = pacientePage.map(PacienteMapper::pacienteDto);
-        return dtoPage;
+    public Page<Paciente> paginado(String search, Pageable pageable) {
+        if (search == null || search.isEmpty()) {
+            return pacienteRepository.findAll(pageable);
+        }
+        return pacienteRepository.paginado(search, pageable);
+
     }
 
 }

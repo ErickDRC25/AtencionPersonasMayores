@@ -7,8 +7,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import com.example.grupod_atencionpersonasmayoressise.Dto.EmpleadoDto;
-import com.example.grupod_atencionpersonasmayoressise.Mapppers.EmpleadoMapper;
 import com.example.grupod_atencionpersonasmayoressise.iservices.IEmpleadoService;
 import com.example.grupod_atencionpersonasmayoressise.model.Empleado;
 import com.example.grupod_atencionpersonasmayoressise.repository.EmpleadoRepository;
@@ -56,7 +54,7 @@ public class EmpleadoService implements IEmpleadoService {
             return empleadoRepository.findAll(pageable);
         }
         return empleadoRepository.paginado(search, pageable);
-        
+
     }
 
 }
