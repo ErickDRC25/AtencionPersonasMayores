@@ -25,7 +25,7 @@ public class Empleado {
     public String apellido;
     public String telefono;
     public String email;
-    public String cargo;
+    
 
     @ManyToOne
     @JoinColumn(name = "id_rol")

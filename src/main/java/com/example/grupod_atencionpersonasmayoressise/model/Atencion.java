@@ -21,7 +21,7 @@ import lombok.NoArgsConstructor;
 public class Atencion {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public long id_atencion;
+    public Long id_atencion;
     public LocalDateTime fecha;
     public String diagnostico;
     public String tratamiento;

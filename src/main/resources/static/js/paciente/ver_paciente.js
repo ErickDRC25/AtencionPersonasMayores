@@ -1,4 +1,4 @@
-alert("Informacion del paciente");
+
 $(document).ready(function () {
   //#idPaciente viene del html referenciado del controller mmodel
   obtenerCurso($("#idPaciente").html());

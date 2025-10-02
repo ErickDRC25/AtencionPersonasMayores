@@ -1,3 +1,4 @@
+
 package com.example.grupod_atencionpersonasmayoressise.Controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,10 +37,15 @@ public class PacienteController {
         return "Paciente/editar_paciente";
     }
 
-    @PostMapping("/agregar")
-    public String guardarPaciente(Paciente paciente) {
-        iPacienteService.guardar(paciente);
-        return "redirect:/Paciente/guardar_paciente";
+    @GetMapping("/nuevo")
+    public String nuevo(Model model) {
+        model.addAttribute("paciente", new Paciente());
+        return "Paciente/guardar_paciente";
     }
 
+   @PostMapping("/guardar")
+public String guardarPersona(Paciente paciente) {
+    iPacienteService.guardar(paciente);
+    return "redirect:/paciente/listar"; 
+}
 }

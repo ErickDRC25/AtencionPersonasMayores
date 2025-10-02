@@ -1,4 +1,4 @@
-alert("Bienvenidos");
+
 $(document).ready(function () {
   listado_paciente();
 });

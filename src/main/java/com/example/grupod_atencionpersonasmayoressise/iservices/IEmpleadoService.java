@@ -2,6 +2,9 @@ package com.example.grupod_atencionpersonasmayoressise.iservices;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
 import com.example.grupod_atencionpersonasmayoressise.model.Empleado;
 
 public interface IEmpleadoService {
@@ -14,4 +17,6 @@ public interface IEmpleadoService {
     Empleado actualizar(Empleado empleado);
 
     Empleado eliminarLogico(Long id); // estado  0
+
+    public Page<Empleado> paginado(String search, Pageable pageable);
 }

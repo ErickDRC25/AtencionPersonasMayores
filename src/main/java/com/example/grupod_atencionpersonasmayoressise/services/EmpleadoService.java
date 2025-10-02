@@ -3,19 +3,25 @@ package com.example.grupod_atencionpersonasmayoressise.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import com.example.grupod_atencionpersonasmayoressise.Dto.EmpleadoDto;
+import com.example.grupod_atencionpersonasmayoressise.Mapppers.EmpleadoMapper;
 import com.example.grupod_atencionpersonasmayoressise.iservices.IEmpleadoService;
 import com.example.grupod_atencionpersonasmayoressise.model.Empleado;
 import com.example.grupod_atencionpersonasmayoressise.repository.EmpleadoRepository;
+
 @Service
-public class EmpleadoService implements IEmpleadoService{
+public class EmpleadoService implements IEmpleadoService {
 
     @Autowired
     EmpleadoRepository empleadoRepository;
+
     @Override
     public List<Empleado> listar() {
-       return empleadoRepository.findAll();
+        return empleadoRepository.findAll();
     }
 
     @Override
@@ -35,13 +41,22 @@ public class EmpleadoService implements IEmpleadoService{
 
     @Override
     public Empleado eliminarLogico(Long id) {
-       Empleado empleado = empleadoRepository.findById(id).orElse(null);
-       if(empleado!=null){
-        empleado.setEstado(0);
-        return empleadoRepository.save(empleado);
-       }
+        Empleado empleado = empleadoRepository.findById(id).orElse(null);
+        if (empleado != null) {
+            empleado.setEstado(0);
+            return empleadoRepository.save(empleado);
+        }
 
-       return null;
+        return null;
     }
-    
+
+    @Override
+    public Page<Empleado> paginado(String search, Pageable pageable) {
+        if (search == null || search.isEmpty()) {
+            return empleadoRepository.findAll(pageable);
+        }
+        return empleadoRepository.paginado(search, pageable);
+        
+    }
+
 }

@@ -3,9 +3,13 @@ package com.example.grupod_atencionpersonasmayoressise.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.example.grupod_atencionpersonasmayoressise.iservices.IRolService;
+
+
 import com.example.grupod_atencionpersonasmayoressise.model.Rol;
 import com.example.grupod_atencionpersonasmayoressise.repository.RolRepository;
 @Service
@@ -42,6 +46,19 @@ public class RolService implements IRolService {
             return rolRepository.save(rol);
         }
         return null;
+    }
+  
+    @Override
+    public List<Rol> listarRol() {
+       return rolRepository.findAll();
+    }
+
+      @Override
+    public Page<Rol> paginado(String search, Pageable pageable) {
+        if (search == null || search.isEmpty()) {
+            return rolRepository.findAll(pageable);
+        }
+        return rolRepository.paginado(search, pageable);
     }
     
      
