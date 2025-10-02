@@ -10,7 +10,7 @@ import com.example.grupod_atencionpersonasmayoressise.iservices.IPacienteService
 import com.example.grupod_atencionpersonasmayoressise.model.Paciente;
 
 import org.springframework.web.bind.annotation.GetMapping;
-
+import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 @RequestMapping("paciente")
@@ -36,10 +36,10 @@ public class PacienteController {
         return "Paciente/editar_paciente";
     }
 
-    @RequestMapping ("/agregar")
+    @PostMapping("/agregar")
     public String guardarPaciente(Paciente paciente) {
         iPacienteService.guardar(paciente);
-        return "Paciente/guardar_paciente";
+        return "redirect:/Paciente/guardar_paciente";
     }
 
 }
