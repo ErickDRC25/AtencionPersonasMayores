@@ -35,5 +35,5 @@ public class Cita {
     @JoinColumn(name = "id_empleado")
     public Empleado empleado;
     
-    public String estado;
+    public int estado;
 }

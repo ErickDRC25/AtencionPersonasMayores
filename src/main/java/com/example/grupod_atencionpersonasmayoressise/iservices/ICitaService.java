@@ -2,6 +2,9 @@ package com.example.grupod_atencionpersonasmayoressise.iservices;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
 import com.example.grupod_atencionpersonasmayoressise.model.Cita;
 
 public interface ICitaService {
@@ -12,4 +15,6 @@ public interface ICitaService {
     Cita obtenerPorId(Long id);
 
     Cita actualizar(Cita cita);
+
+    Page<Cita> paginado(Long search, Pageable pageable);
 }
