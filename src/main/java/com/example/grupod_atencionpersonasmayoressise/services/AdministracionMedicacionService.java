@@ -8,8 +8,9 @@ import org.springframework.stereotype.Service;
 import com.example.grupod_atencionpersonasmayoressise.iservices.IAdministracionMedicacionService;
 import com.example.grupod_atencionpersonasmayoressise.model.AdministracionMedicacion;
 import com.example.grupod_atencionpersonasmayoressise.repository.AdministracionMedicacionRepository;
+
 @Service
-public class AdministracionMedicacionService implements IAdministracionMedicacionService{
+public class AdministracionMedicacionService implements IAdministracionMedicacionService {
     @Autowired
     AdministracionMedicacionRepository adminMedicacionRepository;
 
@@ -30,7 +31,6 @@ public class AdministracionMedicacionService implements IAdministracionMedicacio
 
     @Override
     public AdministracionMedicacion actualizar(AdministracionMedicacion administracion) {
-       return adminMedicacionRepository.save(administracion);
+        return adminMedicacionRepository.save(administracion);
     }
-    
 }

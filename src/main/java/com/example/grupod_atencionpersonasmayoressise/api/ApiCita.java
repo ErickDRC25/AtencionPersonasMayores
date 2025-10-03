@@ -1,7 +1,5 @@
 package com.example.grupod_atencionpersonasmayoressise.api;
 
-
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -14,7 +12,6 @@ import com.example.grupod_atencionpersonasmayoressise.Mapppers.CitaMapper;
 import com.example.grupod_atencionpersonasmayoressise.iservices.ICitaService;
 import com.example.grupod_atencionpersonasmayoressise.model.Cita;
 
-
 import org.springframework.web.bind.annotation.GetMapping;
 
 @RestController
@@ -22,8 +19,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class ApiCita {
     @Autowired
     ICitaService icitaService;
-
-    
 
     @GetMapping("/paginado")
     public Page<CitaDTO> paginado(
@@ -39,6 +34,4 @@ public class ApiCita {
     public Cita obtenerEmpleadoPorId(@RequestParam Long id) {
         return icitaService.obtenerPorId(id);
     }
-
-    
 }

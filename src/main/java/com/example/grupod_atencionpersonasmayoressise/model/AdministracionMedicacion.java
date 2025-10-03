@@ -39,5 +39,4 @@ public class AdministracionMedicacion {
     @ManyToOne
     @JoinColumn(name = "id_empleado")
     public Empleado empleado;
-    
 }

@@ -25,7 +25,6 @@ public class AsistenciaActividad {
     @JoinColumn(name = "id_paciente")
     public Paciente paciente;
 
-
     @ManyToOne
     @JoinColumn(name = "id_actividad")
     public Actividad actividad;

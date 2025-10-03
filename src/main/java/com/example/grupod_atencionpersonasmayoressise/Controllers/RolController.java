@@ -1,4 +1,5 @@
 package com.example.grupod_atencionpersonasmayoressise.Controllers;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,41 +17,41 @@ import com.example.grupod_atencionpersonasmayoressise.model.Rol;
 @RequestMapping("rol")
 public class RolController {
 
-     @Autowired
+    @Autowired
     IRolService irolService;
-     @RequestMapping("/paginado")
+
+    @RequestMapping("/paginado")
     public String listarRolesPage() {
-        return "Rol/listar_roles"; 
+        return "Rol/listar_roles";
     }
 
-@GetMapping("/agregar")
-public String mostrarFormularioAgregar(Model model, @RequestParam(required = false) String error) {
-    model.addAttribute("rol", new Rol()); 
-    if (error != null) {
-        model.addAttribute("error", error); 
+    @GetMapping("/agregar")
+    public String mostrarFormularioAgregar(Model model, @RequestParam(required = false) String error) {
+        model.addAttribute("rol", new Rol());
+        if (error != null) {
+            model.addAttribute("error", error);
+        }
+        return "Rol/guardar_roles";
     }
-    return "Rol/guardar_roles"; 
-}
 
-
-@RequestMapping(value = "/agregar", method = RequestMethod.POST)
-public String guardarRol(Rol rol) {
-    if (rol.getNombre() == null || rol.getNombre().trim().isEmpty()) {
-        return "redirect:/rol/agregar?error=ElNombreEsObligatorio";
+    @RequestMapping(value = "/agregar", method = RequestMethod.POST)
+    public String guardarRol(Rol rol) {
+        if (rol.getNombre() == null || rol.getNombre().trim().isEmpty()) {
+            return "redirect:/rol/agregar?error=ElNombreEsObligatorio";
+        }
+        irolService.guardar(rol);
+        return "redirect:/rol/paginado";
     }
-    irolService.guardar(rol);
-    return "redirect:/rol/paginado"; 
-}
 
-
-     @GetMapping("/obtener")
+    @GetMapping("/obtener")
     public String obtenerRol(@RequestParam Long id, Model model) {
         Rol rol = irolService.obtenerPorId(id);
-        if (rol == null) return "redirect:/rol/paginado";
+        if (rol == null)
+            return "redirect:/rol/paginado";
         model.addAttribute("rol", rol);
-        return "Rol/ver_rol"; 
+        return "Rol/ver_rol";
     }
-    
+
     @GetMapping("/editar")
     public String editar(@RequestParam Long id, Model model) {
         Rol rol = irolService.obtenerPorId(id);
@@ -60,15 +61,15 @@ public String guardarRol(Rol rol) {
         model.addAttribute("rol", rol);
         return "Rol/editar_roles";
     }
-     @PostMapping("/actualizar")
+
+    @PostMapping("/actualizar")
     public String actualizarRol(Rol rol, Model model) {
         if (rol.getNombre() == null || rol.getNombre().trim().isEmpty()) {
             model.addAttribute("error", "El nombre del rol es obligatorio");
             model.addAttribute("rol", rol);
             return "Rol/editar_roles";
         }
-        irolService.actualizar(rol); 
+        irolService.actualizar(rol);
         return "redirect:/rol/paginado";
     }
 }
-

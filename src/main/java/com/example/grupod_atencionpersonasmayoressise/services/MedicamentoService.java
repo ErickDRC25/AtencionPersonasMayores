@@ -8,15 +8,15 @@ import org.springframework.stereotype.Service;
 import com.example.grupod_atencionpersonasmayoressise.iservices.IMedicamentoService;
 import com.example.grupod_atencionpersonasmayoressise.model.Medicamento;
 import com.example.grupod_atencionpersonasmayoressise.repository.MedicamentoRepository;
-@Service
-public class MedicamentoService  implements IMedicamentoService{
 
+@Service
+public class MedicamentoService implements IMedicamentoService {
     @Autowired
     MedicamentoRepository medicamentoRepository;
 
     @Override
     public List<Medicamento> listar() {
-       return medicamentoRepository.findAll();
+        return medicamentoRepository.findAll();
     }
 
     @Override
@@ -38,12 +38,11 @@ public class MedicamentoService  implements IMedicamentoService{
     @Override
     public Medicamento eliminarLogico(Long id) {
         Medicamento medicamento = medicamentoRepository.findById(id).orElse(null);
-        if(medicamento !=null){
+        if (medicamento != null) {
             medicamento.setEstado(0);
             return medicamentoRepository.save(medicamento);
         }
 
         return null;
     }
-    
 }

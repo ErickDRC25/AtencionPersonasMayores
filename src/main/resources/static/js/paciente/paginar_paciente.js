@@ -1,65 +1,51 @@
-alert("hola");
 $(document).ready(function () {
-  $("#tblPacientes").DataTable({
-    processing: true,
-    serverSide: true,
-    ajax: {
-      url: "/back/paciente/paginado",
-      type: "GET",
-      data: function (d) {
+  $('#tblPacientes').DataTable({
+    "processing": true,
+    "serverSide": true,
+    "ajax": {
+      "url": "/back/paciente/paginado",
+      "type": "GET",
+      "data": function (d) {
         d.page = d.start / d.length;
         d.size = d.length;
         d.search = d.search.value;
       },
-      dataSrc: function (json) {
+      "dataSrc": function (json) {
         json.recordsTotal = json.totalElements;
         json.recordsFiltered = json.totalElements;
         return json.content;
       },
     },
-    columns: [
-      { data: "id", className: "text-center" },
-      { data: "nombreCompleto", className: "text-center" },
-      { data: "dni", className: "text-center" },
-      { data: "telefono", className: "text-center" },
+    "columns": [
+      { "data": "id", "className": "text-center" },
+      { "data": "nombreCompleto", "className": "text-center" },
+      { "data": "dni", "className": "text-center" },
+      { "data": "telefono", "className": "text-center" },
       {
-        data: "estado",
-        className: "text-center",
-        render: function (data, type, row) {
+        "data": "estado",
+        "className": "text-center",
+        "render": function (data) {
           if (data === 1) {
-            return '<span class="badge bg-success">Activo</span>';
+            return '<span class="text-active">Activo</span>';
           } else {
-            return '<span class="badge bg-danger">Inactivo</span>';
+            return '<span class="text-inactive">Inactivo</span>';
           }
         },
       },
 
       {
-        data: null,
-        className: "text-center",
-        render: function (data, _, _) {
-          return `
-        <div class="d-flex justify-content-center gap-2">
-            <button class="btn btn-wargnig  ver-mas" data-id="${data.id}"><i class="fas fa-eye"></i> Info</button>
-            <button class="btn btn btn-warning actualizar" data-id="${data.id}"><i class="fas fa-edit"></i></button>
-        </div>
-    `;
-        },
-      },
+        "data": "id",
+        "render": function (data) {
+          return '' +
+            '<div class="d-flex justify-content-center gap-2">' +
+            '<a href="/citas/ver?id=' + data + '" class="btn btn btn-wargnig btn-sm me-1"><i class="fas fa-eye"></i> Ver</a> <a></a>' +
+            '<a href="/citas/actualizar?id=' + data + '" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a>' +
+            '</div>'
+        }
+      }
     ],
 
-    lengthMenu: [5, 10, 20],
-    pageLength: 5,
-  });
-
-  $("#tblPacientes").on("click", ".ver-mas", function () {
-    let idPaciente = $(this).data("id"); 
-    window.location.href = "/paciente/obtener?id=" + idPaciente;
-  });
-
-  $("#tblPacientes").on("click", ".actualizar", function () {
-    let idPaciente = $(this).data("id"); 
-
-    window.location.href = "/paciente/editar?id=" + idPaciente;
+    "lengthMenu": [5, 20, 35, 50],
+    "pageLength": 5
   });
 });

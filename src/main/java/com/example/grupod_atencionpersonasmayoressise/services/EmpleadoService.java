@@ -56,5 +56,4 @@ public class EmpleadoService implements IEmpleadoService {
         return empleadoRepository.paginado(search, pageable);
 
     }
-
 }

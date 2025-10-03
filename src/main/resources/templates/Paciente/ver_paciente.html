@@ -1,72 +1,90 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detalle del curso</title>
+    <title>Detalle del Paciente - Sistema Atención Adulto Mayor</title>
     <link href="/style.css" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="/js/paciente/ver_paciente.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 
 <body>
-
     <div class="container">
-        <div class="encabezado-tabla">
-            <h1 class="title">Información del paciente  </h1>
+        <div class="card shadow p-4 mx-auto" style="max-width: 700px;">
+            <div class="encabezado-tabla">
+                <h1>Detalle del Paciente</h1>
+                <img src="https://docs.cientifica.edu.pe/marketing/sise/aula-virtual/sise-logo.png" alt="Logo de SISE"
+                    class="logo-sise">
+            </div>
 
-            <img src="https://docs.cientifica.edu.pe/marketing/sise/aula-virtual/sise-logo.png" alt="Logo de SISE"
-                class="logo-sise">
-        </div>
-        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif" id="idCargando">
-        <table class="table">
-            <tbody>
-                <tr>
-                    <th>ID</th>
-                    <td id="idPaciente" th:text="${paciente.id_paciente}"></td>
-                </tr>
-                <tr>
-                    <th>Nombre</th>
-                    <td id="idNombre"></td>
-                </tr>
-                <tr>
-                    <th>Apellido</th>
-                    <td id="idApellido"></td>
-                </tr>
-                <tr>
-                    <th>Dni</th>
-                    <td id="idDni"></td>
-                </tr>
-                <tr>
-                    <th>Fecha Nacimiento</th>
-                    <td id="idFechaNacimiento"></td>
-                </tr>
-                <tr>
-                    <th>Direccion</th>
-                    <td id="idDireccion"></td>
-                </tr>
-                <tr>
-                    <th>Telefono</th>
-                    <td id="idTelefono"></td>
-                </tr>
-                <tr>
-                    <th>Alergias</th>
-                    <td id="idAlergias"></td>
-                </tr>
-                <tr>
-                    <th>Enfermedades Cronicas</th>
-                    <td id="idEnfermedadesCronicas"></td>
-                </tr>
-                <tr>
-                    <th>Estado</th>
-                    <td id="idEstado"></td>
-                </tr>
-            </tbody>
-        </table><br>
+            <div class="form-group">
+                <label class="font-weight-bold">ID del Paciente</label>
+                <p class="form-control-plaintext" th:text="${paciente.id_paciente}"></p>
+            </div>
 
-        <div>
-            <a th:href="@{/paciente/listar}" class="btn btn-primary">Volver a la lista</a>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label class="font-weight-bold">Nombre</label>
+                    <p class="form-control-plaintext" th:text="${paciente.nombre}"></p>
+                </div>
+                <div class="form-group col-md-6">
+                    <label class="font-weight-bold">Apellido</label>
+                    <p class="form-control-plaintext" th:text="${paciente.apellido}"></p>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label class="font-weight-bold">DNI</label>
+                    <p class="form-control-plaintext" th:text="${paciente.dni}"></p>
+                </div>
+                <div class="form-group col-md-6">
+                    <label class="font-weight-bold">Fecha de Nacimiento</label>
+                    <p class="form-control-plaintext" th:text="${paciente.fecha_nacimiento}"></p>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-8">
+                    <label class="font-weight-bold">Dirección</label>
+                    <p class="form-control-plaintext" th:text="${paciente.direccion}"></p>
+                </div>
+                <div class="form-group col-md-4">
+                    <label class="font-weight-bold">Teléfono</label>
+                    <p class="form-control-plaintext" th:text="${paciente.telefono}"></p>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="font-weight-bold">Alergias</label>
+                <p class="form-control-plaintext" th:text="${paciente.alergias ?: 'No registra'}"></p>
+            </div>
+
+            <div class="form-group">
+                <label class="font-weight-bold">Enfermedades Crónicas</label>
+                <p class="form-control-plaintext" th:text="${paciente.enfermedades_cronicas ?: 'No registra'}"></p>
+            </div>
+
+            <div class="form-group">
+                <label class="font-weight-bold">Estado</label>
+                <p class="form-control-plaintext">
+                    <span th:if="${paciente.estado == 1}" class="text-active">Activo</span>
+                    <span th:if="${paciente.estado == 0}" class="text-inactive">Inactivo</span>
+                </p>
+            </div>
+
+            <hr>
+
+            <div class="form-row mt-4">
+                <div class="col-md-6 mb-2">
+                    <a th:href="@{/paciente/listar}" class="btn btn-primary btn-block">
+                        <i class="fas fa-arrow-left"></i> Volver al Listado
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
 </body>

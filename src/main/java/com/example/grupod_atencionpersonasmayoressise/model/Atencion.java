@@ -27,7 +27,6 @@ public class Atencion {
     public String tratamiento;
     public String observaciones;
 
-
     @ManyToOne
     @JoinColumn(name="id_paciente")
     public Paciente paciente;
@@ -35,6 +34,4 @@ public class Atencion {
     @ManyToOne
     @JoinColumn (name = "id_empleado")
     public Empleado empleado;
-
-
 }

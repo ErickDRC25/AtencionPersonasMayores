@@ -24,8 +24,6 @@ public class Cita {
     public Long id_cita;
     public LocalDateTime fecha;
     public String motivo;
-    
-    
 
     @ManyToOne
     @JoinColumn(name = "id_paciente")
@@ -34,6 +32,6 @@ public class Cita {
     @ManyToOne
     @JoinColumn(name = "id_empleado")
     public Empleado empleado;
-    
+
     public int estado;
 }

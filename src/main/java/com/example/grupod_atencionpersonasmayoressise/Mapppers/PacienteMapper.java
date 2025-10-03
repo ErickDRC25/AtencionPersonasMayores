@@ -14,7 +14,7 @@ public class PacienteMapper {
         }
         return new PacienteDto(
                 paciente.id_paciente,
-                paciente.nombre+' '+paciente.apellido,
+                paciente.nombre + ' ' + paciente.apellido,
                 paciente.dni,
                 paciente.telefono,
                 paciente.estado);

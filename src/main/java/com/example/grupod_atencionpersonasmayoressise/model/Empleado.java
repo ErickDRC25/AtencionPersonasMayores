@@ -17,20 +17,16 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name = "empleados")
 public class Empleado {
-    
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long id_empleado;
     public String nombre;
     public String apellido;
     public String telefono;
     public String email;
-    
 
     @ManyToOne
     @JoinColumn(name = "id_rol")
     public Rol rol;
     public int estado;
-    
-
 }

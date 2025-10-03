@@ -47,5 +47,4 @@ public class ApiPaciente {
         Page<Paciente> paciente = iPacienteService.paginado(search, PageRequest.of(page, size));
         return paciente.map(PacienteMapper::pacienteDto);
     }
-
 }

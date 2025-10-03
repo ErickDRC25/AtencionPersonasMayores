@@ -6,10 +6,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-
 import com.example.grupod_atencionpersonasmayoressise.model.Rol;
 
-public interface RolRepository extends JpaRepository<Rol,Long>{
+public interface RolRepository extends JpaRepository<Rol, Long> {
     public Page<Rol> findAll(Pageable pageable);
 
     @Query(value = "SELECT r From Rol r where LOWER(r.nombre) like LOWER(CONCAT('%',:search,'%'))")

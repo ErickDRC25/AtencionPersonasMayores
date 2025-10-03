@@ -1,7 +1,5 @@
 package com.example.grupod_atencionpersonasmayoressise.Controllers;
 
-import java.time.format.DateTimeFormatter;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -50,23 +48,16 @@ public class CitaController {
 
     @PostMapping("/guardar")
     public String guardarCita(Cita cita) {
-
         iCitaService.guardar(cita);
-
         return "redirect:/citas/listar";
     }
 
     @GetMapping("/actualizar")
     public String actualizarCita(@RequestParam Long id, Model model) {
-
         Cita cita = iCitaService.obtenerPorId(id);
-        DateTimeFormatter fechaformat = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
-        String fechaHoraInput = cita.getFecha().format(fechaformat);
-
         model.addAttribute("cita", cita);
         model.addAttribute("empleados", iEmpleadoService.listar());
         model.addAttribute("pacientes", iPacienteService.listar());
-        model.addAttribute("fechaHoraInput", fechaHoraInput);
 
         return "Cita/actualizar";
     }

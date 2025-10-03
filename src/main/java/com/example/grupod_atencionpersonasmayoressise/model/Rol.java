@@ -21,7 +21,4 @@ public class Rol {
     public Long id_rol;
     public String nombre;
     public int estado;
-    
-    
-    
 }

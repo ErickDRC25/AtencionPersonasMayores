@@ -1,4 +1,4 @@
-$(document).ready(function () { 
+$(document).ready(function () {
     $('#tblRol').DataTable({
         "processing": true,
         "serverSide": true,
@@ -17,25 +17,24 @@ $(document).ready(function () {
             }
         },
         "columns": [
-            {
-                "data": "id_rol"
-            },
-            {
-                "data": "nombre"
-            },
+            { "data": "id_rol", "className": "text-center" },
+            { "data": "nombre", "className": "text-center" },
             {
                 "data": "estado",
+                "className": "text-center",
                 "render": function (data) {
-                    return data == 1 
-                        ? '<span class="text-active">Activo</span>' 
-                        : '<span class="text-inactive">Inactivo</span>';
-                }
+                    if (data === 1) {
+                        return '<span class="text-active">Activo</span>';
+                    } else {
+                        return '<span class="text-inactive">Inactivo</span>';
+                    }
+                },
             },
             {
                 "data": "id_rol",
                 "render": function (data) {
                     return '' +
-                        '<a href="/rol/editar?id=' + data + '" class="btn btn-success btn-sm">Editar</a>';
+                        '<a href="/rol/editar?id=' + data + '"  class="btn btn btn-wargnig btn-sm me-1"><i class="fas fa-eye"></i> Ver</a>';
                 }
             }
         ],
