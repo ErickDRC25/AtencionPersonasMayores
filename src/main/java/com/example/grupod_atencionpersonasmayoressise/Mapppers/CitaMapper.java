@@ -14,7 +14,6 @@ public class CitaMapper {
 
         String nombrePaciente = cita.getPaciente().getNombre() + " " + cita.getPaciente().getApellido();
         String nombreEmpleado = cita.getEmpleado().getNombre() + " " + cita.getEmpleado().getApellido();
-        String estadoTexto = (cita.getEstado() == 1) ? "Activo" : "Inactivo";
 
         return new CitaDTO(
                 cita.getId_cita(),
@@ -24,8 +23,7 @@ public class CitaMapper {
                 nombreEmpleado,
                 cita.getMotivo(),
                 cita.getFecha(),
-                estadoTexto 
-        );
+                cita.estado);
 
     }
 

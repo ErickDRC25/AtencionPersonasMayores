@@ -9,9 +9,9 @@ import org.springframework.stereotype.Service;
 
 import com.example.grupod_atencionpersonasmayoressise.iservices.IRolService;
 
-
 import com.example.grupod_atencionpersonasmayoressise.model.Rol;
 import com.example.grupod_atencionpersonasmayoressise.repository.RolRepository;
+
 @Service
 public class RolService implements IRolService {
 
@@ -30,7 +30,7 @@ public class RolService implements IRolService {
 
     @Override
     public Rol obtenerPorId(Long id) {
-       return rolRepository.findById(id).orElse(null);
+        return rolRepository.findById(id).orElse(null);
     }
 
     @Override
@@ -42,24 +42,22 @@ public class RolService implements IRolService {
     public Rol elimarLogico(Long id) {
         Rol rol = rolRepository.findById(id).orElse(null);
         if (rol != null) {
-            rol.setEstado(0); 
+            rol.setEstado(0);
             return rolRepository.save(rol);
         }
         return null;
     }
-  
+
     @Override
     public List<Rol> listarRol() {
-       return rolRepository.findAll();
+        return rolRepository.findAll();
     }
 
-      @Override
+    @Override
     public Page<Rol> paginado(String search, Pageable pageable) {
         if (search == null || search.isEmpty()) {
             return rolRepository.findAll(pageable);
         }
         return rolRepository.paginado(search, pageable);
     }
-    
-     
 }

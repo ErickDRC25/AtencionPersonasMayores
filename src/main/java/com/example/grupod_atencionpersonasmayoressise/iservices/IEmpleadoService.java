@@ -16,7 +16,7 @@ public interface IEmpleadoService {
 
     Empleado actualizar(Empleado empleado);
 
-    Empleado eliminarLogico(Long id); // estado  0
+    Empleado eliminarLogico(Long id);
 
     public Page<Empleado> paginado(String search, Pageable pageable);
 }

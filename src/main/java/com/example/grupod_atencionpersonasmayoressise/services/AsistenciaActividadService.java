@@ -8,15 +8,15 @@ import org.springframework.stereotype.Service;
 import com.example.grupod_atencionpersonasmayoressise.iservices.IAsistenciaActividadService;
 import com.example.grupod_atencionpersonasmayoressise.model.AsistenciaActividad;
 import com.example.grupod_atencionpersonasmayoressise.repository.AsistenciaActividadRepository;
+
 @Service
 public class AsistenciaActividadService implements IAsistenciaActividadService {
-
     @Autowired
     AsistenciaActividadRepository actividadRepository;
 
     @Override
     public List<AsistenciaActividad> listar() {
-       return actividadRepository.findAll();
+        return actividadRepository.findAll();
     }
 
     @Override
@@ -26,12 +26,11 @@ public class AsistenciaActividadService implements IAsistenciaActividadService {
 
     @Override
     public AsistenciaActividad obtenerPorId(Long id) {
-       return actividadRepository.findById(id).orElse(null);
+        return actividadRepository.findById(id).orElse(null);
     }
 
     @Override
     public AsistenciaActividad actualizar(AsistenciaActividad asistencia) {
         return actividadRepository.save(asistencia);
     }
-    
 }

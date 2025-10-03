@@ -10,11 +10,13 @@ import org.springframework.stereotype.Service;
 import com.example.grupod_atencionpersonasmayoressise.iservices.ICitaService;
 import com.example.grupod_atencionpersonasmayoressise.model.Cita;
 import com.example.grupod_atencionpersonasmayoressise.repository.CitaRepository;
+
 @Service
 public class CitaService implements ICitaService {
 
     @Autowired
     CitaRepository citaRepository;
+
     @Override
     public List<Cita> listar() {
         return citaRepository.findAll();
@@ -22,7 +24,7 @@ public class CitaService implements ICitaService {
 
     @Override
     public Cita guardar(Cita cita) {
-       return citaRepository.save(cita);
+        return citaRepository.save(cita);
     }
 
     @Override
@@ -32,16 +34,14 @@ public class CitaService implements ICitaService {
 
     @Override
     public Cita actualizar(Cita cita) {
-       return citaRepository.save(cita);
+        return citaRepository.save(cita);
     }
 
     @Override
     public Page<Cita> paginado(Long search, Pageable pageable) {
-        if(search==null){
+        if (search == null) {
             return citaRepository.findAll(pageable);
         }
         return citaRepository.paginado(search, pageable);
     }
-
-    
 }

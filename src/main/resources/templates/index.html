@@ -4,25 +4,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard | Gestión de Pacientes</title>
+    <title>Inicio - Sistema Atención Adulto Mayor</title>
     <link href="/style.css" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="/js/index.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 </head>
 
 <body>
-
     <div class="app-layout">
         <aside class="sidebar-menu">
             <div class="logo-sidebar">
                 <i class="fas fa-heartbeat"></i> Atención Adulto Mayor
             </div>
             <nav>
-                <a class="menu-item active">
+                <a class="menu-item active" th:href="@{/index/}">
                     <i class="fas fa-chart-line"></i> Menu Principal
                 </a>
-
                 <a href="/paciente/listar" class="menu-item">
                     <i class="fas fa-procedures"></i> Pacientes
                 </a>
@@ -38,27 +34,32 @@
                 <a href="/rol/paginado" class="menu-item">
                     <i class="fas fa-key"></i> Roles de Usuario
                 </a>
-                <a href="/config" class="menu-item">
-                    <i class="fas fa-cog"></i> Configuración
-                </a>
             </nav>
         </aside>
 
         <main class="dashboard-main-content">
             <header class="top-bar">
-                <h1 class="title">Panel de Control</h1>
+                <h1 class="title">Sistema de Atención a Adultos Mayores</h1>
                 <div class="user-profile">
                     <span class="user-name">Administrador</span>
                     <i class="fas fa-user-circle"></i>
                 </div>
             </header>
-            <div class="image-container">
-                <img src="https://theramart.com/cdn/shop/articles/atencion_al_adulto_mayor1_1024x1024.png?v=1557851584"
-                    class="main-image">
+
+            <div class="container">
+                <div class="encabezado-tabla">
+                    <h1>Panel de Control Principal</h1>
+                    <img src="https://docs.cientifica.edu.pe/marketing/sise/aula-virtual/sise-logo.png"
+                        alt="Logo de SISE" class="logo-sise">
+                </div>
+
+                <div class="image-container">
+                    <img src="https://theramart.com/cdn/shop/articles/atencion_al_adulto_mayor1_1024x1024.png?v=1557851584"
+                        class="main-image">
+                </div>
             </div>
         </main>
     </div>
-
 </body>
 
 </html>

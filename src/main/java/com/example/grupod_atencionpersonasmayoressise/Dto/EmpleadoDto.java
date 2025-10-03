@@ -13,5 +13,5 @@ public class EmpleadoDto {
     public String telefono;
     public String email;
     public String rol;
-    public String estado;
+    public int estado;
 }

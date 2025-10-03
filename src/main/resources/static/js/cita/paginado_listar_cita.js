@@ -22,40 +22,36 @@ $(document).ready(function () {
             { "data": "nombrePaciente", "className": "text-center" },
             { "data": "nombreEmpleado", "className": "text-center" },
             { "data": "motivo", "className": "text-center" },
-            { "data": "fecha", "className": "text-center" },
-            { "data": "estado", "className": "text-center" },
-
             {
-                "data": null,
+                "data": "fecha",
                 "className": "text-center",
-                "render": function (data, _, _) {
-                    return `
-                <div class="d-flex justify-content-center gap-2">
-                    <button class="btn btn-sm btn-primary ver-mas" data-id="${data.id_cita}">Ver más</button>
-                    <button class="btn btn-sm btn-warning actualizar" data-id="${data.id_cita}">Actualizar</button>
-
-                </div>
-            `;
+                "render": function (data) {
+                    return new Date(data).toLocaleString('es-ES');
+                }
+            },
+            {
+                "data": "estado",
+                "className": "text-center",
+                "render": function (data) {
+                    if (data === 1) {
+                        return '<span class="text-active">Activo</span>';
+                    } else {
+                        return '<span class="text-inactive">Inactivo</span>';
+                    }
+                },
+            },
+            {
+                "data": "id_cita",
+                "render": function (data) {
+                    return '' +
+                        '<div class="d-flex justify-content-center gap-2">' +
+                        '<a href="/citas/ver?id=' + data + '" class="btn btn btn-wargnig btn-sm me-1"><i class="fas fa-eye"></i> Ver</a> <a></a>' +
+                        '<a href="/citas/actualizar?id=' + data + '" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a>' +
+                        '</div>'
                 }
             }
         ],
-
-        "lengthMenu": [5, 10, 15, 20],
-        "pageLength": 10
-    })
-
-    $('#tblCita').on('click', '.ver-mas', function () {
-        let idCita = $(this).data("id");
-        window.location.href = "/citas/ver?id=" + idCita;
+        "lengthMenu": [5, 20, 35, 50],
+        "pageLength": 5
     });
-
-
-    $('#tblCita').on('click', '.actualizar', function () {
-        let idCita = $(this).data("id");
-
-
-        window.location.href = "/citas/actualizar?id=" + idCita;
-
-    });
-
-})
+});

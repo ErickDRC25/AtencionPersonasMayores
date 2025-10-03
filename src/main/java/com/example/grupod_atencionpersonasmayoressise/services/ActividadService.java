@@ -13,6 +13,7 @@ import com.example.grupod_atencionpersonasmayoressise.repository.ActividadReposi
 public class ActividadService implements IActividadService {
     @Autowired
     ActividadRepository actividadRepository;
+
     @Override
     public List<Actividad> listar() {
         return actividadRepository.findAll();
@@ -25,7 +26,7 @@ public class ActividadService implements IActividadService {
 
     @Override
     public Actividad obtenerPorId(Long id) {
-       return actividadRepository.findById(id).orElse(null);
+        return actividadRepository.findById(id).orElse(null);
     }
 
     @Override
@@ -36,13 +37,10 @@ public class ActividadService implements IActividadService {
     @Override
     public Actividad eliminarLogico(Long id) {
         Actividad actividad = actividadRepository.findById(id).orElse(null);
-        if(actividad!=null){
+        if (actividad != null) {
             actividad.setEstado(0);
             return actividadRepository.save(actividad);
         }
         return null;
-    
     }
-
-    
 }

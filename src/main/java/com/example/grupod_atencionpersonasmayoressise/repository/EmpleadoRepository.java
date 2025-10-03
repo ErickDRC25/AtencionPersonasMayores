@@ -8,8 +8,8 @@ import org.springframework.data.repository.query.Param;
 
 import com.example.grupod_atencionpersonasmayoressise.model.Empleado;
 
-public interface EmpleadoRepository  extends JpaRepository<Empleado,Long>{
-     public Page<Empleado> findAll(Pageable pageable);
+public interface EmpleadoRepository extends JpaRepository<Empleado, Long> {
+    public Page<Empleado> findAll(Pageable pageable);
 
     @Query(value = "SELECT e From Empleado e where LOWER(e.nombre) like LOWER(CONCAT('%',:search,'%'))")
     public Page<Empleado> paginado(@Param(value = "search") String search, Pageable pageable);

@@ -8,8 +8,9 @@ import org.springframework.stereotype.Service;
 import com.example.grupod_atencionpersonasmayoressise.iservices.IFamiliarService;
 import com.example.grupod_atencionpersonasmayoressise.model.Familiar;
 import com.example.grupod_atencionpersonasmayoressise.repository.FamiliarRepository;
+
 @Service
-public class FamiliarService implements IFamiliarService{
+public class FamiliarService implements IFamiliarService {
     @Autowired
     FamiliarRepository familiarRepository;
 
@@ -35,14 +36,13 @@ public class FamiliarService implements IFamiliarService{
 
     @Override
     public Familiar eliminarLogico(Long id) {
-        Familiar familiar =  familiarRepository.findById(id).orElse(null);
+        Familiar familiar = familiarRepository.findById(id).orElse(null);
 
-        if(familiar != null){
+        if (familiar != null) {
             familiar.setEstado(0);
             return familiarRepository.save(familiar);
         }
 
         return null;
     }
-    
 }

@@ -5,8 +5,6 @@ public class PacienteDto {
     public String nombreCompleto;
     public String dni;
     public String telefono;
-    // public String alergias;
-    // public String enfermedades_cronicas;
     public int estado;
 
     public PacienteDto(Long id, String nombreCompleto, String dni, String telefono, int estado) {
@@ -56,5 +54,4 @@ public class PacienteDto {
     public void setEstado(int estado) {
         this.estado = estado;
     }
-
 }
